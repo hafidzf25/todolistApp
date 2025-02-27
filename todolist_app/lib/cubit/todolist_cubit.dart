@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:todolist_app/models/list_todo.dart';
 
 class TodoCubit extends Cubit<List<ListTodo>> {
@@ -15,15 +16,13 @@ class TodoCubit extends Cubit<List<ListTodo>> {
 
   @override
   void onChange(Change<List<ListTodo>> change) {
-    // TODO: implement onChange
     super.onChange(change);
-    print(change);
+    debugPrint(change.toString());
   }
 
   @override
   void onError(Object error, StackTrace stackTrace) {
-    // TODO: implement onError
     super.onError(error, stackTrace);
-    print(error);
+    debugPrint(error.toString());
   }
 }
