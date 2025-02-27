@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todolist_app/cubit/todolist_cubit.dart';
+import 'package:todolist_app/models/list_todo.dart';
 
 class TodoList extends StatelessWidget {
   const TodoList({super.key});
@@ -16,11 +19,16 @@ class TodoList extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Digidaw'),
+      body: BlocBuilder<TodoCubit, List<ListTodo>>(
+        builder: (context, todos) {
+          return ListView.builder(
+            itemCount: todos.length,
+            itemBuilder: (context, index) {
+              final todo = todos[index];
+              return ListTile(
+                title: Text(todo.title),
+              );
+            },
           );
         },
       ),

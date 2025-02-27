@@ -1,6 +1,11 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:todolist_app/models/list_todo.dart';
 
-class TodolistCubit extends Cubit {
-  TodolistCubit() : super(TodolistInitial());
+class TodoCubit extends Cubit<List<ListTodo>> {
+  TodoCubit() : super([]);
+
+  void add(String title) {
+    final todo = ListTodo(title: title, createdAt: DateTime.now());
+    emit([...state, todo]);
+  }
 }

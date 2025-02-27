@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todolist_app/cubit/todolist_cubit.dart';
 
 class AddTodoPage extends StatelessWidget {
   const AddTodoPage({super.key});
@@ -28,7 +30,9 @@ class AddTodoPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
+                  context.read<TodoCubit>().add(TextController.text.trim());
                   print(TextController.text.trim());
+                  Navigator.of(context).pop();
                 },
                 child: Text("Submit"),
               ),
